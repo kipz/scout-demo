@@ -76,7 +76,7 @@ jobs:
           command: cves
           image: ${{ steps.meta.outputs.tags }}
           sarif-file: sarif.output.json
-          platform: "linux/arm64"
+          platform: "linux/amd64"
           summary: true
       
       - name: Upload SARIF result
@@ -95,6 +95,6 @@ jobs:
           image: ${{ steps.meta.outputs.tags }}
           only-severities: critical,high
           to-env: prod
-          platform: "linux/arm64"
+          platform: "linux/amd64"
           exit-code: true       
           summary: true
