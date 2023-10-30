@@ -86,6 +86,7 @@ jobs:
         with:
           command: compare
           image: ${{ steps.meta.outputs.tags }}
+          organization: jamescarnegie559
           only-severities: critical,high
           to-env: prod
           platform: "linux/amd64"
