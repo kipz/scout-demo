@@ -50,7 +50,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          platforms: "linux/amd64,linux/arm64"
+          platforms: "linux/amd64"
           sbom: true
           provenance: true
       
@@ -64,7 +64,7 @@ jobs:
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          platforms: "linux/arm64"
+          platforms: "linux/amd64"
           sbom: false
           provenance: false          
 
