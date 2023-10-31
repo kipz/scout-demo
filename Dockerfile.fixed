@@ -1,5 +1,0 @@
-FROM alpine
-
-RUN apk -U upgrade
-
-RUN apk --no-cache knot-mod-geoip
