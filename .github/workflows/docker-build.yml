@@ -64,7 +64,7 @@ jobs:
           images:  ${{ env.IMAGE_NAME }}:main
           organization: jamescarnegie559
           files: in-toto.json
-          predecate-type: https://openvex.dev/ns/v0.2.0
+          predecate-type: https://slsa.dev/verification_summary/v0.1
           
       - name: Build and push Docker image on PR
         id: build-and-push-pr
