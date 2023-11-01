@@ -24,9 +24,17 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ env.SHA }}
+          
+      - name: Expose GitHub Runtime
+        uses: crazy-max/ghaction-github-runtime@v2
 
       - name: Setup Docker buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: |
+            image=openpubkey/buildkit:opk-signing
+            env.ACTIONS_ID_TOKEN_REQUEST_URL=${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
+            env.ACTIONS_ID_TOKEN_REQUEST_TOKEN=${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
 
       - name: Log into registry
         uses: docker/login-action@v2
@@ -68,7 +76,7 @@ jobs:
           files: in-toto.json
           predicate-type: https://slsa.dev/verification_summary/v0.1
           
-      - name: Build and push Docker image on PR
+      - name: Build Docker image on PR
         id: build-and-push-pr
         if: ${{ github.event_name == 'pull_request_target' }}
         uses: docker/build-push-action@v4
