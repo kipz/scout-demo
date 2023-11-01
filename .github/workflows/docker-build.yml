@@ -53,7 +53,19 @@ jobs:
           platforms: "linux/amd64"
           sbom: true
           provenance: true
+
       
+      - name: Add post-build signed attestation
+        id: docker-scout-attest
+        if: ${{ github.event_name != 'pull_request_target' }}
+        uses: kipz/scout-action@main
+        with:
+          command: attest
+          images:  ${{ env.IMAGE_NAME }}:main
+          organization: jamescarnegie559
+          files: in-toto.json
+          predecate-type: https://openvex.dev/ns/v0.2.0
+          
       - name: Build and push Docker image on PR
         id: build-and-push-pr
         if: ${{ github.event_name == 'pull_request_target' }}
