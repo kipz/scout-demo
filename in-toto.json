@@ -1,4 +1,4 @@
-"predicate": {
+{
   "verifier": {
     "id": "https://example.com/publication_verifier"
   },
@@ -15,3 +15,4 @@
     "SLSA_LEVEL_2": 7,
     "SLSA_LEVEL_1": 1,
   }
+}
